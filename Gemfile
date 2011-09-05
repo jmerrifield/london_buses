@@ -1,3 +1,4 @@
+source :rubygems
 gem 'rest-client'
 gem 'nokogiri'
 gem 'sinatra'
