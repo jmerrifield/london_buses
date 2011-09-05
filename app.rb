@@ -3,7 +3,15 @@ require 'nokogiri'
 require 'sinatra'
 require 'haml'
 
-get '/:token' do |token|
+get '/' do
+    haml :home
+end
+
+post '/my-buses' do
+    redirect "/buses/#{params[:token]}"
+end
+
+get '/buses/:token' do |token|
     doc = Nokogiri::HTML(RestClient.get('http://accessible.countdown.tfl.gov.uk/myStops',
                                         {:cookies => {:UserToken => token}}))
 
@@ -23,5 +31,5 @@ get '/:token' do |token|
         }
     end
 
-    haml :index, :locals => {:stops => stops}
+    haml :buses, :locals => {:stops => stops}
 end

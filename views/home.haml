@@ -1,0 +1,15 @@
+#home{'data-role' => 'page'}
+  %div{'data-role' => 'header'}
+    %h1 Bus Information
+  %div{'data-role' => 'content'}
+    %form{:action => '/my-buses', :method => 'post'}
+      %fieldset
+        %p
+          %label{:for => 'token'} User Token:
+          %input{:type => 'text', :name => 'token'}
+        %p
+          %input{:type => 'submit', :value => 'My Buses'}
+    %p
+      Please see 
+      %a{:href => 'http://yagri.com/2011/09/05/One-for-the-Londoners'} this blog post
+      for information on what this page is and how to use it.

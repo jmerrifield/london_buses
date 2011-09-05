@@ -1,0 +1,23 @@
+#stop-list{'data-role' => 'page', 'data-url' => "buses/#{params[:token]}"}
+  %div{'data-role' => 'header'}
+    %h1 My Stops
+  %div{'data-role' => 'content'}
+    %ul.stops
+      - stops.each do |stop|
+        %li.stop
+          %a{:href => "\#stop_#{stop[:stop_id]}"}
+            ="#{stop[:name]} (#{stop[:stop_letter]})"
+- stops.each do |stop|
+  %div{:id => ['stop', stop[:stop_id]], 'data-role' => 'page'}
+    %div{'data-role' => 'header'}
+      %h1=stop[:name]
+      %h3="Towards #{stop[:towards]}"
+    %div{'data-role' => 'content'}
+      %ol.buses
+        - stop[:buses].each do |bus|
+          %li.bus
+            =bus[:route]
+            =bus[:direction]
+            =bus[:due]
+    %div{'data-role' => 'footer'}
+      %a{:href => '#stop-list'} Back to My Stops
