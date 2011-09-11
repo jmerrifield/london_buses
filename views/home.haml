@@ -2,6 +2,21 @@
   %div{'data-role' => 'header'}
     %h1 Bus Information
   %div{'data-role' => 'content'}
+    :markdown
+      This site is *not* intended to be a replacement for the real TfL site, it's purpose is to give 
+      you a bookmarkable URL which will immediately show a mobile-friendly view of live bus departures 
+      from your favourite stops.
+
+      You must use the [normal site](http://countdown.tfl.gov.uk) to set up your favourite stops, then 
+      find out what your `UserToken` cookie value is.  If you don't know how to do this, try the following:
+
+      After setting up your stops, while still on the TfL site, paste the following into your browsers address bar:
+
+      `javascript:alert(document.cookie.substring(document.cookie.indexOf('UserToken') + 10, 30));`
+
+      This should pop up a box containing the UserToken - copy and paste it into the box below and hit 'My Buses'.
+
+      Once you are on the next page you can bookmark the URL and send it to your phone for easy access.
     %form{:action => '/my-buses', :method => 'post'}
       %fieldset
         %p
@@ -9,7 +24,6 @@
           %input{:type => 'text', :name => 'token'}
         %p
           %input{:type => 'submit', :value => 'My Buses'}
-    %p
-      Please see 
-      %a{:href => 'http://yagri.com/2011/09/05/One-for-the-Londoners'} this blog post
-      for information on what this page is and how to use it.
+
+    :markdown
+      See [this blog post](http://yagri.com/2011/09/05/One-for-the-Londoners) for the technical details behind this.
